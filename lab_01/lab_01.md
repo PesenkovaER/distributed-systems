@@ -135,7 +135,7 @@ grpc.insecure_channel('localhost:50051')
 
 После завершения отправки сервер возвращает результат обработки данных.
 
-<img width="1033" height="385" alt="image" src="https://github.com/user-attachments/assets/35d4a53b-7243-4ca1-be80-e262fb40f238" />
+<img width="1029" height="470" alt="image" src="https://github.com/user-attachments/assets/7d2e4a49-47cc-478a-8a50-0ce11fee99f4" />
 
 📷 Скриншот: отправка ответов клиентом
 
