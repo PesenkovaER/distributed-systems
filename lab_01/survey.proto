@@ -3,12 +3,16 @@ syntax = "proto3";
 package survey;
 
 service SurveyService {
-  rpc SubmitAnswers(stream Answer) returns (SurveyResult);
+  rpc SubmitAnswers(AnswerList) returns (SurveyResult);  
 }
 
 message Answer {
   string question = 1;
   string answer = 2;
+}
+
+message AnswerList {          
+  repeated Answer answers = 1;  
 }
 
 message SurveyResult {
