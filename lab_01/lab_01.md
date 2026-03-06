@@ -47,6 +47,7 @@ Generated --> Server
 Generated --> Client
 
 Server --> Data 
+
 ```
 Компоненты системы
 
