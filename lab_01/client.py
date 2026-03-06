@@ -3,31 +3,34 @@ import survey_pb2
 import survey_pb2_grpc
 
 
-def generate_answers():
-    questions = [
-        ("Как вам курс?", "Очень нравится"),
-        ("Сложная ли лабораторная?", "Немного сложная"),
-        ("Будете использовать gRPC?", "Да")
-    ]
+questions = {
+    1: "Нравится ли вам программирование?",
+    2: "Какой язык программирования вы изучаете?",
+    3: "Использовали ли вы раньше gRPC?"
+}
 
-    for q, a in questions:
+
+def generate_answers():
+    for q_id, question in questions.items():
+        print(f"{q_id}. {question}")
+        answer = input("Ваш ответ: ")
+
         yield survey_pb2.Answer(
-            question=q,
-            answer=a
+            question_id=q_id,
+            text=answer
         )
 
 
 def run():
-    with grpc.insecure_channel('localhost:50051') as channel:
-        stub = survey_pb2_grpc.SurveyServiceStub(channel)
+    channel = grpc.insecure_channel("localhost:50051")
+    stub = survey_pb2_grpc.SurveyServiceStub(channel)
 
-        print("Отправка ответов на сервер...")
-        response = stub.SubmitAnswers(generate_answers())
+    print("Опрос начался. Пожалуйста, ответьте на вопросы:\n")
 
-        print("\nОтвет сервера:")
-        print(f"Всего ответов: {response.total_answers}")
-        print(response.message)
+    response = stub.SubmitAnswers(generate_answers())
+
+    print("\nОтвет сервера:", response.message)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     run()
