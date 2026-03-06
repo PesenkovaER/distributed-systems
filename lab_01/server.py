@@ -10,7 +10,7 @@ class SurveyService(survey_pb2_grpc.SurveyServiceServicer):
         answers = []
 
         for answer in request_iterator:
-            print(f"Получен ответ на вопрос {answer.question_id}: {answer.text}")
+            print(f"Получен ответ на вопрос {answer.question}: {answer.answer}")
             answers.append(answer)
 
         result_text = f"Сервер получил {len(answers)} ответов на опрос."
