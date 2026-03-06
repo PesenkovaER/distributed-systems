@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package survey;
+
+service SurveyService {
+  rpc SubmitAnswers(stream Answer) returns (SurveyResult);
+}
+
+message Answer {
+  string question = 1;
+  string answer = 2;
+}
+
+message SurveyResult {
+  int32 total_answers = 1;
+  string message = 2;
+}
