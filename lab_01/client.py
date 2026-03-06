@@ -16,8 +16,8 @@ def generate_answers():
         answer = input("Ваш ответ: ")
 
         yield survey_pb2.Answer(
-            question_id=q_id,
-            text=answer
+            question=question,
+            answer=answer
         )
 
 
