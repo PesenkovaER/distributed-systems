@@ -26,6 +26,7 @@ SubmitAnswers(stream Answer)
 В работе реализована классическая **клиент-серверная архитектура**.
 
 ```mermaid
+
 flowchart LR
 
 Client[Client<br>client.py]
@@ -46,7 +47,7 @@ Proto --> Generated
 Generated --> Server
 Generated --> Client
 
-Server --> Data 
+Server --> Data
 
 ```
 Компоненты системы
