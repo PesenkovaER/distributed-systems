@@ -80,7 +80,7 @@ survey.proto
 
 Таким образом реализуется Client Streaming RPC.
 
-<img width="755" height="437" alt="image" src="https://github.com/user-attachments/assets/a8c9e69c-d907-45dd-a98f-0650d6c427d7" />
+<img width="642" height="531" alt="image" src="https://github.com/user-attachments/assets/b083d773-7690-4d35-857d-df60b1c6f2fe" />
 
 📷 Скриншот: содержимое файла survey.proto
 
