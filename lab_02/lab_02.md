@@ -14,59 +14,72 @@
 
 ---
 
+
 ## Архитектура решения
+
+В работе реализована классическая **клиент-серверная архитектура** с использованием **Nginx** в качестве обратного прокси.
 
 ```mermaid
 flowchart LR
+    Client[Клиент<br>curl / браузер]
+    Nginx[Nginx<br>обратный прокси]
+    Flask[Flask API<br>app.py]
+    Data[Хранилище данных<br>в памяти]
 
-Client[Client<br>curl / browser]
-
-Nginx[Nginx<br>Reverse Proxy]
-
-Flask[Flask API<br>app.py]
-
-Data[Cars Storage<br>в памяти]
-
-Client --> Nginx
-Nginx --> Flask
-Flask --> Data
-Flask --> Nginx
-Nginx --> Client
+    Client -->|HTTP-запрос| Nginx
+    Nginx -->|proxy_pass| Flask
+    Flask --> Data
+    Data --> Flask
+    Flask -->|HTTP-ответ| Nginx
+    Nginx --> Client
 ```
+## Компоненты системы
 
-# Анализ HTTP-ответов Ozon
+**Клиент (curl / браузер)**  
+Отправляет HTTP-запросы к Nginx для получения данных или отправки информации.
+
+**Nginx**  
+Выступает в роли обратного прокси. Принимает входящие запросы от клиента и перенаправляет их к Flask-приложению в соответствии с настроенным правилом `location /api/`.
+
+**Flask API ([app.py](app.py))**  
+Обрабатывает HTTP-запросы, полученные от Nginx. Реализует бизнес-логику работы с каталогом автомобилей (CRUD операции).
+
+**Хранилище данных**  
+Имитация базы данных. Данные о автомобилях (список `cars`) хранятся в оперативной памяти приложения Flask.
+
+---
+
+## Описание реализации
+
+### Анализ HTTP-ответов Ozon
 
 Для анализа HTTP-запросов использовалась утилита `curl`.
 
-## Получение заголовков ответа
+**Получение заголовков ответа:**
 ```bash
-curl -I https://www.ozon.ru/search/?text=ноутбук
+curl -I https://www.ozon.ru/search/?text=iphone
+```
+**Получение полного ответа:**
+```bash
+curl -i https://www.ozon.ru/search/?text=iphone
 ```
 В ответе были проанализированы:
+- HTTP статус-код (например, `200 OK`)
+- тип содержимого (`content-type`)
+- используемый сервер (`nginx`)
 
-- HTTP статус-код (например, 200 OK)
-- тип содержимого (content-type)
-- используемый сервер (nginx)
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/curl-i-screenshot" />
 
-## Получение полного ответа
-```bash
-curl -i https://www.ozon.ru/search/?text=ноутбук
-```
-Команда позволяет увидеть:
-- HTTP-заголовки
-- HTML-код страницы
+*Скриншот: результат выполнения `curl -I`*
 
-## Скриншоты:
-curl -I запрос
+---
 
-curl -i запрос
+### Реализация REST API «Каталог автомобилей»
 
-HTML ответ страницы
+API реализован с использованием **Flask**.  
+Код приложения находится в файле **[app.py](app.py)**
 
-## Реализация REST API "Каталог автомобилей"
-Был разработан REST API с использованием Flask.
-
-Структура объекта Car
+**Структура объекта Car:**
 ```json
 {
   "id": 1,
@@ -75,8 +88,71 @@ HTML ответ страницы
   "year": 2020
 }
 ```
-## Реализованные методы
-- GET /api/cars — получить список автомобилей
-- POST /api/cars — добавить автомобиль
+## Реализованные методы:
 
-Код приложения (app.py)
+- `GET /api/cars` — получить список автомобилей
+- `POST /api/cars` — добавить автомобиль
+
+Запуск сервера выполняется командой:
+```bash
+python3 app.py
+```
+Сервер запускается на `http://127.0.0.1:5000`
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/flask-server" />
+
+📷 *Скриншот: запущенный Flask-сервер*
+
+**Проверка API:**
+
+Добавление автомобиля:
+```bash
+curl -X POST -H "Content-Type: application/json" \
+-d '{"make":"Toyota","model":"Camry","year":2020}' \
+http://127.0.0.1:5000/api/cars
+```
+**Получение списка:**
+```bash
+curl http://127.0.0.1:5000/api/cars
+```
+📷 Скриншот: POST-запрос к API
+
+### 3️⃣ Настройка Nginx как обратного прокси
+
+Была выполнена установка Nginx командой `sudo apt install nginx -y`. После установки была настроена конфигурация в файле `/etc/nginx/sites-available/default`, куда добавлен блок `location /api/ { proxy_pass http://127.0.0.1:5000; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; }`. Затем выполнена проверка конфигурации командой `sudo nginx -t` и перезапуск сервера `sudo systemctl restart nginx`. Работа прокси была проверена с помощью `curl http://localhost/api/cars` — запрос успешно прошел через Nginx и был перенаправлен на Flask-приложение.
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/nginx-test" />
+
+📷 *Скриншот: проверка конфигурации Nginx*
+
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/nginx-curl" />
+
+📷 *Скриншот: запрос через Nginx*
+
+---
+
+## 🧠 Используемые технологии
+
+- Python 3
+- Flask
+- Nginx
+- HTTP / REST
+- curl
+
+---
+
+## 🚀 Запуск проекта
+
+Для запуска проекта необходимо активировать виртуальное окружение командой `source venv/bin/activate`, затем запустить Flask-сервер командой `python3 app.py` и Nginx командой `sudo systemctl start nginx`.
+
+---
+
+## 📊 Результат работы
+
+В результате выполнения лабораторной работы был проведен анализ HTTP-запросов сайта Ozon с использованием `curl`, разработан REST API для работы с каталогом автомобилей на Flask, а также настроен Nginx в качестве обратного прокси для Flask-приложения. Обеспечено перенаправление запросов с Nginx на Flask API.
+
+---
+
+## 📌 Вывод
+
+В ходе выполнения лабораторной работы были изучены принципы работы HTTP-протокола и проанализированы ответы веб-сервера. Был реализован REST API с использованием Flask, а также настроен Nginx как обратный прокси. В результате были получены практические навыки разработки веб-сервисов и работы с серверной инфраструктурой.
