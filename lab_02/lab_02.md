@@ -68,7 +68,7 @@ curl -i https://www.ozon.ru/search/?text=iphone
 - тип содержимого (`content-type`)
 - используемый сервер (`nginx`)
 
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/curl-i-screenshot" />
+<img width="691" height="358" alt="image" src="https://github.com/user-attachments/assets/54e1338b-b45a-45c1-b420-628fa8d24747" />
 
 *Скриншот: результат выполнения `curl -I`*
 
@@ -115,17 +115,20 @@ http://127.0.0.1:5000/api/cars
 ```bash
 curl http://127.0.0.1:5000/api/cars
 ```
+
+<img width="649" height="510" alt="image" src="https://github.com/user-attachments/assets/b9c99851-6822-4a1d-bef8-e25a1cfca149" />
+
 📷 Скриншот: POST-запрос к API
 
 ### 3️⃣ Настройка Nginx как обратного прокси
 
 Была выполнена установка Nginx командой `sudo apt install nginx -y`. После установки была настроена конфигурация в файле `/etc/nginx/sites-available/default`, куда добавлен блок `location /api/ { proxy_pass http://127.0.0.1:5000; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; }`. Затем выполнена проверка конфигурации командой `sudo nginx -t` и перезапуск сервера `sudo systemctl restart nginx`. Работа прокси была проверена с помощью `curl http://localhost/api/cars` — запрос успешно прошел через Nginx и был перенаправлен на Flask-приложение.
 
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/nginx-test" />
+<img width="702" height="103" alt="image" src="https://github.com/user-attachments/assets/8a9debec-32e7-4d97-8541-1fe356ec0328" />
 
 📷 *Скриншот: проверка конфигурации Nginx*
 
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/nginx-curl" />
+<img width="632" height="511" alt="image" src="https://github.com/user-attachments/assets/f8423e0b-48f0-4431-b943-2e8778046d80" />
 
 📷 *Скриншот: запрос через Nginx*
 
