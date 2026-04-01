@@ -120,6 +120,12 @@ curl http://127.0.0.1:5000/api/cars
 
 📷 Скриншот: POST-запрос к API
 
+**Получение списка по id**
+```bash
+curl http://127.0.0.1:5000/api/cars/1
+```
+
+
 ### 3️⃣ Настройка Nginx как обратного прокси
 
 Была выполнена установка Nginx командой `sudo apt install nginx -y`. После установки была настроена конфигурация в файле `/etc/nginx/sites-available/default`, куда добавлен блок `location /api/ { proxy_pass http://127.0.0.1:5000; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; }`. Затем выполнена проверка конфигурации командой `sudo nginx -t` и перезапуск сервера `sudo systemctl restart nginx`. Работа прокси была проверена с помощью `curl http://localhost/api/cars` — запрос успешно прошел через Nginx и был перенаправлен на Flask-приложение.
