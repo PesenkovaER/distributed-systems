@@ -64,13 +64,17 @@ curl -I https://www.ozon.ru/search/?text=iphone
 curl -i https://www.ozon.ru/search/?text=iphone
 ```
 В ответе были проанализированы:
-- HTTP статус-код (например, `200 OK`)
-- тип содержимого (`content-type`)
-- используемый сервер (`nginx`)
+- HTTP статус-код: 307 Temporary Redirect
+- тип содержимого (content-type): text/html
+- используемый сервер: nginx
 
 <img width="691" height="358" alt="image" src="https://github.com/user-attachments/assets/54e1338b-b45a-45c1-b420-628fa8d24747" />
 
 *Скриншот: результат выполнения `curl -I`*
+
+<img width="818" height="499" alt="image" src="https://github.com/user-attachments/assets/35dc786e-7402-46b2-b4de-45271904bb8c" />
+
+*Скриншот: результат выполнения `curl -i`*
 
 ---
 
