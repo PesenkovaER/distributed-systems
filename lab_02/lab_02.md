@@ -99,7 +99,7 @@ python3 app.py
 ```
 Сервер запускается на `http://127.0.0.1:5000`
 
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/flask-server" />
+<img width="644" height="276" alt="image" src="https://github.com/user-attachments/assets/86e36833-dd27-4ad6-a96a-b0cacdfd5829" />
 
 📷 *Скриншот: запущенный Flask-сервер*
 
