@@ -116,17 +116,16 @@ python3 app.py
 📷 *Скриншот: запущенный Flask-сервер*
 
 **Проверка API:**
+Получение списка
+<img width="625" height="415" alt="image" src="https://github.com/user-attachments/assets/127365a7-721e-42f5-942e-9df33f33168b" />
 
 Добавление автомобиля:
 ```bash
 curl -X POST -H "Content-Type: application/json" \
--d '{"make":"Toyota","model":"Camry","year":2020}' \
-http://127.0.0.1:5000/api/cars
+-d '{"make":"Audi","model":"A6","year":2021}' \
+http://localhost:5000/api/cars
 ```
-**Получение списка:**
-```bash
-curl http://127.0.0.1:5000/api/cars
-```
+Получение списка после POST
 
 <img width="649" height="510" alt="image" src="https://github.com/user-attachments/assets/b9c99851-6822-4a1d-bef8-e25a1cfca149" />
 
