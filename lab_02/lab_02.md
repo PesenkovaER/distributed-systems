@@ -118,8 +118,8 @@ python3 app.py
 **Проверка API:**
 Получение списка
 
-<img width="649" height="322" alt="image" src="https://github.com/user-attachments/assets/1a9835ac-8e10-4c2a-ae05-8a1b72cb19d8" /> <img width="625" height="415" alt="image" src="https://github.com/user-attachments/assets/127365a7-721e-42f5-942e-9df33f33168b" />
-
+<img width="625" height="415" alt="image" src="https://github.com/user-attachments/assets/127365a7-721e-42f5-942e-9df33f33168b" />
+<img width="649" height="322" alt="image" src="https://github.com/user-attachments/assets/1a9835ac-8e10-4c2a-ae05-8a1b72cb19d8" />
 Добавление автомобиля:
 ```bash
 curl -X POST -H "Content-Type: application/json" \
