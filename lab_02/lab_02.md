@@ -113,10 +113,11 @@ python3 app.py
 
 <img width="644" height="276" alt="image" src="https://github.com/user-attachments/assets/86e36833-dd27-4ad6-a96a-b0cacdfd5829" />
 
-📷 *Скриншот: запущенный Flask-сервер*
+*Скриншот: запущенный Flask-сервер*
 
 **Проверка API:**
 Получение списка
+
 <img width="625" height="415" alt="image" src="https://github.com/user-attachments/assets/127365a7-721e-42f5-942e-9df33f33168b" />
 
 Добавление автомобиля:
@@ -125,11 +126,13 @@ curl -X POST -H "Content-Type: application/json" \
 -d '{"make":"Audi","model":"A6","year":2021}' \
 http://localhost:5000/api/cars
 ```
+
+<img width="1326" height="621" alt="image" src="https://github.com/user-attachments/assets/d51c64ad-4965-411c-88f4-cfc5d0d8448d" />
+
 Получение списка после POST
 
-<img width="649" height="510" alt="image" src="https://github.com/user-attachments/assets/b9c99851-6822-4a1d-bef8-e25a1cfca149" />
+<img width="1335" height="627" alt="image" src="https://github.com/user-attachments/assets/bac2a026-20a3-4d97-a1bd-a5bc8f7074c8" />
 
-Скриншот: POST-запрос к API
 
 **Получение списка по id**
 ```bash
