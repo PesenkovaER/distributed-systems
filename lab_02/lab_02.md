@@ -53,28 +53,36 @@ flowchart LR
 
 ### Анализ HTTP-ответов Ozon
 
-Для анализа HTTP-запросов использовалась утилита `curl`.
+Для анализа HTTP-запросов использовалась утилита `curl` с ключом `-v` (verbose).
 
-**Получение заголовков ответа:**
 ```bash
 curl -v https://www.ozon.ru/search/?text=iphone
 ```
-**Получение полного ответа:**
-```bash
-curl -i https://www.ozon.ru/search/?text=iphone
-```
-В ответе были проанализированы:
-- HTTP статус-код: 307 Temporary Redirect
-- тип содержимого (content-type): text/html
-- используемый сервер: nginx
+Ключ -v показывает полный диалог между клиентом и сервером: технические детали соединения, заголовки запроса, заголовки ответа и тело ответа.
 
-<img width="691" height="358" alt="image" src="https://github.com/user-attachments/assets/54e1338b-b45a-45c1-b420-628fa8d24747" />
+**Что было проанализировано в выводе:**
 
-*Скриншот: результат выполнения `curl -I`*
+| Элемент вывода | Значение |
+|----------------|----------|
+| `> GET /search/?text=iphone HTTP/2` | Запрос, который curl отправил серверу |
+| `< HTTP/2 307` | Сервер ответил статусом 307 Temporary Redirect |
+| `< server: nginx` | Сервер Ozon использует веб-сервер Nginx |
+| `< location: https://www.ozon.ru/search/?text=iphone&__rr=1` | Адрес, на который нужно перенаправить запрос |
+| `< content-type: text/html` | Тип содержимого ответа — HTML |
+| `* Connected to www.ozon.ru (185.73.193.68)` | IP-адрес сервера Ozon |
 
-<img width="818" height="499" alt="image" src="https://github.com/user-attachments/assets/35dc786e-7402-46b2-b4de-45271904bb8c" />
+**Итоги анализа:**
 
-*Скриншот: результат выполнения `curl -i`*
+- Статус-код: **307 Temporary Redirect** (временное перенаправление)
+- Сервер: **nginx**
+- Тип содержимого: **text/html**
+- Перенаправление на: `https://www.ozon.ru/search/?text=iphone&__rr=1`
+- Используемый протокол: **HTTP/2**
+
+*Скриншот: результат выполнения `curl -v`*
+
+<img width="1004" height="936" alt="image" src="https://github.com/user-attachments/assets/5359ad60-b8f4-4bda-a80a-3cf53413f3e7" />
+<img width="1327" height="432" alt="image" src="https://github.com/user-attachments/assets/9b053748-27b2-4083-810a-360e3735e31f" />
 
 ---
 
