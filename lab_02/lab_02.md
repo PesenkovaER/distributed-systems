@@ -57,7 +57,7 @@ flowchart LR
 
 **Получение заголовков ответа:**
 ```bash
-curl -I https://www.ozon.ru/search/?text=iphone
+curl -v https://www.ozon.ru/search/?text=iphone
 ```
 **Получение полного ответа:**
 ```bash
