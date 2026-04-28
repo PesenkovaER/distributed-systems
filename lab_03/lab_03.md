@@ -119,17 +119,17 @@ vowels:текст
 * Consumer
 * Producer
 Были выполнены запросы по всем задачам:
-*1. Подписка на рассылку.
+*1. Подписка на рассылку.*
 
 <img width="1280" height="181" alt="image" src="https://github.com/user-attachments/assets/5af56acd-13f1-4b04-a7b5-06cb01fe41dd" />
 
 ---
-*2. Генерация случайного пароля.  
+*2. Генерация случайного пароля.*
 
 <img width="1280" height="186" alt="image" src="https://github.com/user-attachments/assets/3a68dff0-9d0f-4093-82ec-7c526a9eaeac" />
 
 ---
-*3. Подсчет гласных
+*3. Подсчет гласных*
 
 <img width="1280" height="177" alt="image" src="https://github.com/user-attachments/assets/ad40f75b-4790-40be-a330-3999eff97c81" />
 
