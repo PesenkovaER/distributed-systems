@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package message;
+
+service MessageService {
+  rpc Subscribe (EmailRequest) returns (Response);
+  rpc GeneratePassword (PasswordRequest) returns (Response);
+  rpc CountVowels (TextRequest) returns (Response);
+}
+
+message EmailRequest {
+  string email = 1;
+}
+
+message PasswordRequest {
+  int32 length = 1;
+}
+
+message TextRequest {
+  string text = 1;
+}
+
+message Response {
+  string result = 1;
+}
