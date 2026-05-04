@@ -85,7 +85,36 @@ graph TB
 - **Алгоритм:** AES-128-CBC + HMAC-SHA256
 
 ---
+## Инструкция по запуску
 
+### 1. Установка зависимостей
+```bash
+pip install flask cryptography requests
+```
+### 2. енерация сертификатов
+```bash
+chmod +x generate_certificates.sh
+./generate_certificates.sh
+```
+### 3. Генерация ключа Fernet
+```bash
+python3 generate_key.py
+```
+### 4. Запуск компонентов
+```bash
+# Терминал 1
+python3 server.py 5001
+
+# Терминал 2
+python3 server.py 5002
+
+# Терминал 3
+python3 coordinator.py
+
+# Терминал 4
+python3 client.py
+```
+---
 ## Демонстрация работы системы
 
 ### Скриншот 1: Запущенные серверы и координатор
