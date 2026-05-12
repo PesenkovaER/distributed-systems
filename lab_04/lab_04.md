@@ -122,7 +122,7 @@ python3 client.py
 <img width="1481" height="437" alt="image" src="https://github.com/user-attachments/assets/0769db9b-00d4-48e0-885f-57d358c25106" />
 
 
-**Подпись:** Запущены [Сервер 1](server.py) (порт 5001), [Сервер 2](server.py) (порт 5002) и [Координатор](coordinator.py) (порт 8000).
+**Запущены [Сервер 1](server.py) (порт 5001), [Сервер 2](server.py) (порт 5002) и [Координатор](coordinator.py) (порт 8000).**
 
 ---
 
@@ -136,7 +136,7 @@ python3 client.py
 
 <img width="905" height="92" alt="image" src="https://github.com/user-attachments/assets/f6a20edd-cc91-463f-b8cf-fbab9e2fadae" />
 
-**Подпись:** Содержимое экспортированного файла.
+**Содержимое экспортированного файла.**
 
 ---
 
@@ -145,7 +145,7 @@ python3 client.py
 <img width="1726" height="599" alt="image" src="https://github.com/user-attachments/assets/9eca1f70-a9d0-4e9a-b339-453123cf5447" />
 
 
-**Подпись:** Сервер 1 остановлен. Координатор выводит сообщение "Server failed: https://127.0.0.1:5001" и автоматически переключается на Сервер 2 (порт 5002). Сервер 2 успешно обрабатывает запрос.
+**Сервер 1 остановлен. Координатор выводит сообщение "Server failed: https://127.0.0.1:5001" и автоматически переключается на Сервер 2 (порт 5002). Сервер 2 успешно обрабатывает запрос.**
 
 ---
 
@@ -153,7 +153,7 @@ python3 client.py
 
 <img width="1736" height="595" alt="image" src="https://github.com/user-attachments/assets/b1bdebef-7d3b-4ddf-8a47-219081ace4c2" />
 
-**Подпись:** Сервер 1 снова запущен. Координатор снова направляет запросы на Сервер 1.
+**Сервер 1 снова запущен. Координатор снова направляет запросы на Сервер 1.**
 
 
 ## Структура проекта
