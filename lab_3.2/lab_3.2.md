@@ -52,13 +52,14 @@
 
 ## Таблица результатов
 
-<img width="817" height="521" alt="image" src="https://github.com/user-attachments/assets/ba8003df-69eb-43f5-af18-b73fee746e9b" />
+<img width="850" height="566" alt="image" src="https://github.com/user-attachments/assets/4d738c3f-e1de-41e8-bfa4-a428ce9c7443" />
+
 
 ---
 
 # 📈 График 1 — Время конвергенции
 
-<img width="558" height="423" alt="image" src="https://github.com/user-attachments/assets/8cf3f5b3-ba76-49ba-9606-90d12e35abbe" />
+<img width="547" height="421" alt="image" src="https://github.com/user-attachments/assets/4574d920-e5f7-484d-8924-c59721b7840b" />
 
 
 *Зависимость времени конвергенции от Gossip Interval*
@@ -83,7 +84,7 @@
 
 # 📈 График 2 — Нагрузка на сеть
 
-<img width="568" height="410" alt="image" src="https://github.com/user-attachments/assets/8ddbd196-52b7-4e63-86c3-48882ba4df1b" />
+<img width="556" height="413" alt="image" src="https://github.com/user-attachments/assets/3a5fd4bc-c51a-4c8b-8b14-a203ee98858a" />
 
 
 *Зависимость количества сообщений от Gossip Interval*
@@ -108,7 +109,7 @@
 
 # 📈 График 3 — Влияние потери пакетов
 
-<img width="560" height="441" alt="image" src="https://github.com/user-attachments/assets/91ce2c70-7a95-480f-961a-4deb1da4b79c" />
+<img width="568" height="426" alt="image" src="https://github.com/user-attachments/assets/eb85793b-a727-4e4c-9b85-6435b2f2147c" />
 
 
 *Влияние Packet Loss на время convergence*
@@ -142,7 +143,7 @@
 
 # 📈 График 4 — Влияние межкластерной задержки
 
-<img width="868" height="591" alt="image" src="https://github.com/user-attachments/assets/9c8b1157-b28e-4bda-838a-600f994e5b8b" />
+<img width="858" height="577" alt="image" src="https://github.com/user-attachments/assets/4ad9cd8b-6bed-4004-8b51-749c87caad41" />
 
 
 *Влияние межкластерной задержки на время convergence*
